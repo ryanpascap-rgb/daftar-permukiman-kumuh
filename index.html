@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daftar kawasan permukiman kumuh yang ditangani, lengkap dengan pencarian dan penyaring jenis kumuh.">
+  <title>Daftar Penanganan Permukiman Kumuh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="halaman">
+    <h1 class="judul-halaman">DAFTAR PENANGANAN PERMUKIMAN KUMUH</h1>
+
+    <div class="pencarian">
+      <label for="cari" class="sr-only">Kata kunci pencarian</label>
+      <input type="search" id="cari" name="cari" placeholder="Ketik kata kunci pencarian" autocomplete="off">
+    </div>
+
+    <div class="penyaring">
+      <label for="jenis" class="sr-only">Jenis kumuh</label>
+      <select id="jenis" name="jenis">
+        <option value="semua">Jenis Kumuh</option>
+        <option value="berat">Kumuh Berat</option>
+        <option value="ringan">Kumuh Ringan</option>
+      </select>
+    </div>
+
+    <section class="daftar" aria-label="Daftar kawasan">
+      <article class="kartu" data-jenis="berat">
+        <div class="kartu-kepala">
+          <span class="lencana-tingkat">PUSAT</span>
+          <span class="lencana-jenis">Kumuh Berat</span>
+        </div>
+        <div class="kartu-isi">
+          <h2 class="kartu-judul">Kawasan Permukiman Kumuh <span class="nama-kawasan">Pasie Nan Tigo</span></h2>
+          <p class="kartu-lokasi">Kota Padang, Provinsi Sumatra Barat</p>
+        </div>
+      </article>
+
+      <article class="kartu" data-jenis="ringan">
+        <div class="kartu-kepala">
+          <span class="lencana-tingkat">DAERAH</span>
+          <span class="lencana-jenis">Kumuh Ringan</span>
+        </div>
+        <div class="kartu-isi">
+          <h2 class="kartu-judul">Kawasan Permukiman Kumuh <span class="nama-kawasan">Pasar Lama Pulau Punjung</span></h2>
+          <p class="kartu-lokasi">Kota Dharmasraya, Provinsi Sumatra Barat</p>
+        </div>
+      </article>
+
+      <article class="kartu" data-jenis="ringan">
+        <div class="kartu-kepala">
+          <span class="lencana-tingkat">DAERAH</span>
+          <span class="lencana-jenis">Kumuh Ringan</span>
+        </div>
+        <div class="kartu-isi">
+          <h2 class="kartu-judul">Kawasan Permukiman Kumuh Batu Aji</h2>
+          <p class="kartu-lokasi">Kota Dharmasraya, Provinsi Kepulauan Riau</p>
+        </div>
+      </article>
+
+      <p class="kosong" id="kosong" hidden>Tidak ada kawasan yang cocok. Coba kata kunci atau jenis kumuh lain.</p>
+    </section>
+  </main>
+
+  <script>
+    // Menyaring kartu berdasarkan kata kunci dan jenis kumuh
+    const kolomCari = document.getElementById('cari');
+    const pilihJenis = document.getElementById('jenis');
+    const semuaKartu = document.querySelectorAll('.kartu');
+    const pesanKosong = document.getElementById('kosong');
+
+    function saring() {
+      const kata = kolomCari.value.trim().toLowerCase();
+      const jenis = pilihJenis.value;
+      let jumlahTampil = 0;
+
+      semuaKartu.forEach(function (kartu) {
+        const cocokKata = kartu.textContent.toLowerCase().includes(kata);
+        const cocokJenis = jenis === 'semua' || kartu.dataset.jenis === jenis;
+        const tampil = cocokKata && cocokJenis;
+        kartu.hidden = !tampil;
+        if (tampil) jumlahTampil++;
+      });
+
+      pesanKosong.hidden = jumlahTampil > 0;
+    }
+
+    kolomCari.addEventListener('input', saring);
+    pilihJenis.addEventListener('change', saring);
+  </script>
+</body>
+</html>

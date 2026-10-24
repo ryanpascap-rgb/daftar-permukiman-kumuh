@@ -1,0 +1,194 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  color: #111111;
+  background-color: #ffffff;
+  line-height: 1.5;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.halaman {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.judul-halaman {
+  margin: 0 0 40px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Kolom pencarian */
+.pencarian {
+  max-width: 760px;
+  margin: 0 auto 36px;
+}
+
+.pencarian input {
+  width: 100%;
+  height: 64px;
+  padding: 0 32px 0 72px;
+  border: 2px solid #e3e3e3;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 1.15rem;
+  color: #111111;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 28px center;
+}
+
+.pencarian input::placeholder {
+  color: #8a8a8a;
+}
+
+/* Penyaring jenis kumuh */
+.penyaring {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 32px;
+}
+
+.penyaring select {
+  appearance: none;
+  height: 44px;
+  padding: 0 44px 0 24px;
+  border: 1px solid #333333;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #111111;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E") no-repeat right 16px center;
+  cursor: pointer;
+}
+
+/* Daftar kartu */
+.daftar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kartu {
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #fcfcfc;
+}
+
+.kartu-kepala {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 38px;
+  background-color: #f9f8f9;
+}
+
+.lencana-tingkat {
+  min-width: 144px;
+  padding: 5px 24px;
+  border: 1px solid #14c3dc;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #14c3dc;
+}
+
+.lencana-jenis {
+  padding: 6px 22px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  background-color: #00c060;
+  white-space: nowrap;
+}
+
+.kartu-isi {
+  padding: 20px 38px 42px;
+}
+
+.kartu-judul {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.nama-kawasan {
+  color: #0b3b8c;
+}
+
+.kartu-lokasi {
+  margin: 2px 0 0;
+  font-size: 1.15rem;
+}
+
+.kosong {
+  margin: 8px 0 0;
+  text-align: center;
+  color: #666666;
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #0b3b8c;
+  outline-offset: 2px;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+  .halaman {
+    padding: 32px 16px 48px;
+  }
+
+  .judul-halaman {
+    font-size: 1.2rem;
+  }
+
+  .pencarian input {
+    height: 54px;
+    padding-left: 60px;
+    font-size: 1rem;
+    background-position: 22px center;
+  }
+
+  .penyaring select {
+    width: 100%;
+  }
+
+  .kartu-kepala {
+    padding: 16px 20px;
+  }
+
+  .lencana-tingkat {
+    min-width: 0;
+    padding: 4px 18px;
+    font-size: 1rem;
+  }
+
+  .kartu-isi {
+    padding: 16px 20px 28px;
+  }
+
+  .kartu-judul,
+  .kartu-lokasi {
+    font-size: 1rem;
+  }
+}
